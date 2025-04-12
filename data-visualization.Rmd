@@ -36,3 +36,12 @@ ggplot(data = gapminder_filtered,
   theme_bw()
 ```
 
+
+# Plotting with tidyplots
+
+```{r}
+install.packages("tidyplots")
+
+library("tidyplots")
+```
+
