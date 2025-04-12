@@ -28,6 +28,11 @@ install.packages("sf", type = "binary")
 #install_github("r-spatial/sf")
 ```
 
+```{r}
+# install.packages("devtools")
+devtools::install_github("llendway/gardenR")
+```
+
 # Load Packages
 ```{r}
 library(tidyverse)     # for data cleaning and plotting
