@@ -11,20 +11,28 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+# Install and load gapminder R Package
+```{r}
+#install.packages("gapminder")
+library("gapminder")
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
+```{r}
+gapminder_filtered <- gapminder |>
+  filter(year == 2007)
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+ggplot(data = gapminder_filtered,
+       mapping = aes(x = gdpPercap, y = lifeExp, 
+                     size = pop, color = continent)) +
+  geom_point() + 
+  scale_x_log10(labels = scales::dollar_format(accuracy = 1)) +
+  scale_size_continuous(labels = scales::label_comma()) +
+  scale_color_viridis_d(option = "plasma") +
+  labs(x = "GDP per capita", y = "Life expectancy",
+       title = "Health and wealth are strongly related",
+       subtitle = "142 countries; 2007 only", caption = "Source: The Gapminder Project",
+       color = "Continent", size = "Population") +
+  theme_bw()
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
