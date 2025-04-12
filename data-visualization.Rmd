@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library("gapminder")
 ```
 
-
+# Execute the script to get the beautiful scatter plot
 ```{r}
 gapminder_filtered <- gapminder |>
   filter(year == 2007)
